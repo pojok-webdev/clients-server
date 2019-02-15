@@ -1,5 +1,7 @@
 var express = require('express'),
     app = express(),
+    connection = require('./js/connections'),
+    clientqueries = require('./js/clientqueries'),
     bodyParser = require('body-parser');
 app.engine('html',require('ejs').renderFile)
 app.use(function(req,res,next){
@@ -10,6 +12,11 @@ app.use(function(req,res,next){
 app.use(bodyParser.json({limit:'10mb',extended:true}))
 app.use(bodyParser.urlencoded({limit:'10mb',extended:true}))
 app.get('/clients',(req,res) => {
-    res.send({'test':'hi'})
+    console.log('clients invoked bro')
+    connection.doQuery(clientqueries.gets(),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+    
 })
 app.listen(process.env.PORT||2119)
