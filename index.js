@@ -19,4 +19,20 @@ app.get('/clients',(req,res) => {
     })
     
 })
+app.post('/clientupdate',(req,res) => {
+    console.log('clientupdate invoked bro')
+    connection.doQuery(clientqueries.update(req.body),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+    
+})
+app.post('/clientcreate',(req,res) => {
+    console.log('clientcreate invoked bro')
+    connection.doQuery(clientqueries.create(req.body),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+    
+})
 app.listen(process.env.PORT||2119)
