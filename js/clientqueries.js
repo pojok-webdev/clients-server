@@ -13,6 +13,7 @@ get = obj => {
 }
 gets = () => {
     sql = 'select id,name,clientcategory from clients '
+    sql+= 'limit 1,10'
     console.log('sql',sql)
     return sql
 }
