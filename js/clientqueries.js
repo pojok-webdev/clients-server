@@ -23,9 +23,9 @@ get = obj => {
     console.log('sql',sql)
     return sql
 }
-gets = () => {
+gets = obj => {
     sql = 'select id,name,clientcategory from clients '
-    //sql+= 'limit 1,100'
+    sql+= 'limit '+obj.segment+','+obj.offset+' '
     console.log('sql',sql)
     return sql
 }
