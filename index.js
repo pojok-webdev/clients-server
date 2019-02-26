@@ -32,6 +32,13 @@ app.get('/clients/:segment/:offset',(req,res) => {
         res.send(result)
     })
 })
+app.get('/clientgetbyname/:name',(req,res) => {
+    console.log('clients invoked bro')
+    connection.doQuery(clientqueries.getByName(req.params),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+})
 app.post('/clientupdate',(req,res) => {
     console.log('clientupdate invoked bro')
     connection.doQuery(clientqueries.update(req.body),result => {

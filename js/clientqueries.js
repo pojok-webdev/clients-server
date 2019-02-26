@@ -29,6 +29,12 @@ gets = obj => {
     console.log('sql',sql)
     return sql
 }
+getByName = obj => {
+    sql = 'select id,name,clientcategory from clients '
+    sql+= 'where name like "%'+obj.name+'%" '
+    console.log('sql',sql)
+    return sql
+}
 update = obj => {
     sql = 'update clients set clientcategory="'+obj.clientcategory+'" '
     sql+= 'where id='+obj.id+' '
@@ -47,6 +53,7 @@ module.exports = {
     create:create,
     get:get,
     gets:gets,
+    getByName:getByName,
     update:update,
     remove:remove
 }
