@@ -25,7 +25,7 @@ get = obj => {
 }
 gets = () => {
     sql = 'select id,name,clientcategory from clients '
-    sql+= 'limit 1,100'
+    //sql+= 'limit 1,100'
     console.log('sql',sql)
     return sql
 }
