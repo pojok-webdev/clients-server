@@ -11,13 +11,26 @@ app.use(function(req,res,next){
 });
 app.use(bodyParser.json({limit:'10mb',extended:true}))
 app.use(bodyParser.urlencoded({limit:'10mb',extended:true}))
+app.get('/categorycount/:clientcategory',(req,res) => {
+    console.log('clients invoked bro')
+    connection.doQuery(clientqueries.categoryCount(req.params),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+})
+app.get('/categorygets/:clientcategory',(req,res) => {
+    console.log('clients invoked bro')
+    connection.doQuery(clientqueries.categoryGets(req.params),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+})
 app.get('/clients',(req,res) => {
     console.log('clients invoked bro')
     connection.doQuery(clientqueries.gets(),result => {
         console.log('result',result)
         res.send(result)
     })
-    
 })
 app.post('/clientupdate',(req,res) => {
     console.log('clientupdate invoked bro')
@@ -25,7 +38,6 @@ app.post('/clientupdate',(req,res) => {
         console.log('result',result)
         res.send(result)
     })
-    
 })
 app.post('/clientcreate',(req,res) => {
     console.log('clientcreate invoked bro')
@@ -33,6 +45,5 @@ app.post('/clientcreate',(req,res) => {
         console.log('result',result)
         res.send(result)
     })
-    
 })
 app.listen(process.env.PORT||2119)

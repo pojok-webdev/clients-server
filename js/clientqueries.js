@@ -1,3 +1,15 @@
+categoryCount = obj => {
+    sql = 'select count(id) from clients '
+    sql+= 'where clientcategory="'+obj.clientcategory+'" '
+    console.log("sql",sql)
+    return sql
+}
+categoryGets = obj => {
+    sql = 'select id,name from clients '
+    sql+= 'where clientcategory="'+obj.clientcategory+'" '
+    console.log("sql",sql)
+    return sql
+}
 create = obj => {
     sql = 'insert into clients (name,clientcategory) '
     sql+= 'values '
@@ -13,7 +25,7 @@ get = obj => {
 }
 gets = () => {
     sql = 'select id,name,clientcategory from clients '
-    sql+= 'limit 1,10'
+    sql+= 'limit 1,100'
     console.log('sql',sql)
     return sql
 }
@@ -30,6 +42,8 @@ remove = obj => {
     return sql
 }
 module.exports = {
+    categoryCount:categoryCount,
+    categoryGets:categoryGets,
     create:create,
     get:get,
     gets:gets,
