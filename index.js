@@ -25,9 +25,9 @@ app.get('/categorygets/:clientcategory',(req,res) => {
         res.send(result)
     })
 })
-app.get('/clients',(req,res) => {
+app.get('/clients/:segment/:offset',(req,res) => {
     console.log('clients invoked bro')
-    connection.doQuery(clientqueries.gets(),result => {
+    connection.doQuery(clientqueries.gets(req.params),result => {
         console.log('result',result)
         res.send(result)
     })
