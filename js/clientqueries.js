@@ -44,6 +44,7 @@ update = obj => {
 uncategorized = () => {
     sql = 'select id,name,clientcategory from clients '
     sql+= 'where clientcategory not in ("1","2","3","4","5") '
+    sql+= 'and active="1" '
     console.log('uncategorized sql',sql)
     return sql
 }
