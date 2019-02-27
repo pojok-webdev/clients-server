@@ -53,4 +53,11 @@ app.post('/clientcreate',(req,res) => {
         res.send(result)
     })
 })
+app.get('/uncategorized',(req,res) => {
+    console.log('clients invoked bro')
+    connection.doQuery(clientqueries.uncategorized(),result => {
+        console.log('result',result)
+        res.send(result)
+    })
+})
 app.listen(process.env.PORT||2119)

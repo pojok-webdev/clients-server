@@ -41,6 +41,12 @@ update = obj => {
     console.log('sql',sql)
     return sql
 }
+uncategorized = () => {
+    sql = 'select id,name from clients '
+    sql+= 'where clientcategory not in ("1","2","3","4","5") '
+    console.log('uncategorized sql',sql)
+    return sql
+}
 remove = obj => {
     sql = 'delete from clients '
     sql+= 'where id='+obj.id+' '
@@ -55,5 +61,6 @@ module.exports = {
     gets:gets,
     getByName:getByName,
     update:update,
+    uncategorized:uncategorized,
     remove:remove
 }
