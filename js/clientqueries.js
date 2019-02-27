@@ -1,12 +1,14 @@
 categoryCount = obj => {
     sql = 'select count(id) from clients '
     sql+= 'where clientcategory="'+obj.clientcategory+'" '
+    sql+= 'and active="1" '
     console.log("sql",sql)
     return sql
 }
 categoryGets = obj => {
     sql = 'select id,name from clients '
     sql+= 'where clientcategory="'+obj.clientcategory+'" '
+    sql+= 'and active="1" '
     console.log("sql",sql)
     return sql
 }
@@ -25,6 +27,7 @@ get = obj => {
 }
 gets = obj => {
     sql = 'select id,name,clientcategory from clients '
+    sql+= 'where active="1" '
     sql+= 'limit '+obj.segment+','+obj.offset+' '
     console.log('sql',sql)
     return sql
